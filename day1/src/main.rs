@@ -47,7 +47,7 @@ fn similarity_score(a: &mut Vec<i32>, map_b: &mut HashMap<i32, i32>) -> i32 {
 
 	for n in 0..a.len() {
 		score += (a[n] * map_b.get(&a[n]).unwrap_or(&0)).abs();
-	}
+	} // Improvement use: .iter().for_each(|v| { ... });
 
 	score
 }
@@ -57,4 +57,5 @@ fn main() {
 	let (mut map_a, mut map_b): (HashMap<i32, i32>, HashMap<i32, i32>) = (HashMap::new(), HashMap::new());
     extract_puzzle_input("./input.txt", &mut a, &mut map_b);
     print!("{}", similarity_score(&mut a, &mut map_b))
+
 }
